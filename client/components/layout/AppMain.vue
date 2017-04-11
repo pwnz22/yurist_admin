@@ -1,40 +1,24 @@
 <template>
   <section class="app-main">
-    <vuetable ref="vuetable"
-              api-url="http://yurist-api.ils-team.ru/api/admin/questions"
-              :fields="fields"
-    ></vuetable>
-    <!--<div class="container is-fluid is-marginless app-content">-->
-    <!--<levelbar></levelbar>-->
-    <!--<transition-->
-    <!--mode="out-in"-->
-    <!--enter-active-class="fadeIn"-->
-    <!--leave-active-class="fadeOut"-->
-    <!--appear>-->
-    <!--<router-view class="animated"></router-view>-->
-    <!--</transition>-->
-    <!--</div>-->
+    <div class="container is-fluid is-marginless app-content">
+      <levelbar></levelbar>
+      <transition
+        mode="out-in"
+        enter-active-class="fadeIn"
+        leave-active-class="fadeOut"
+        appear>
+        <router-view class="animated"></router-view>
+      </transition>
+    </div>
   </section>
 </template>
 
 <script>
-  import Vuetable from 'vuetable-2/src/components/Vuetable'
   import Levelbar from './Levelbar'
 
   export default {
     components: {
-      Levelbar,
-      Vuetable
-    },
-    data () {
-      return {
-        fields: [
-          {
-            name: 'title',
-            title: 'Заголовок'
-          }
-        ]
-      }
+      Levelbar
     }
   }
 </script>

@@ -1,8 +1,8 @@
 import Vue from 'vue'
+import NProgress from 'vue-nprogress'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueAuth from '@websanova/vue-auth'
-import NProgress from 'vue-nprogress'
 import { sync } from 'vuex-router-sync'
 import App from './App.vue'
 import router from './router'
@@ -15,12 +15,12 @@ Vue.router = router
 Vue.use(VueAxios, axios)
 Vue.use(VueAuth, {
   auth: {
-    request: function (req, token) {
+    request (req, token) {
       this.options.http._setHeaders.call(this, req, {Authorization: 'Bearer ' + token})
     },
-    response: function (res) {
+    response (res) {
       // Get Token from response body
-      return res.data.meta.token
+      return res.data.meta
     }
   },
   http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
@@ -31,7 +31,6 @@ Vue.use(VueAuth, {
 
 Vue.use(NProgress)
 
-// Enable devtools
 Vue.config.devtools = true
 
 sync(store, router)
